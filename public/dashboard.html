@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — Bliss Lifestyle</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <img src="/logo.png" alt="Bliss Lifestyle" />
+        </div>
+        <ul class="sidebar-nav">
+          <li>
+            <a href="#" class="active" id="navRegistrations">
+              <i class="fa-solid fa-users"></i> Registrations
+            </a>
+          </li>
+          <li>
+            <a href="#" id="navStats">
+              <i class="fa-solid fa-chart-line"></i> Overview
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <button class="btn btn-outline btn-sm" id="logoutBtn" style="width: 100%">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <div class="main-content">
+        <header class="topbar">
+          <h2>Registration Dashboard</h2>
+          <div class="topbar-actions">
+            <div style="position: relative">
+              <button class="icon-btn" id="notifBtn" title="Notifications">
+                <i class="fa-regular fa-bell"></i>
+                <span class="notification-badge hidden" id="notifBadge">0</span>
+              </button>
+              <div class="notification-panel" id="notifPanel">
+                <div class="notification-panel-header">
+                  <h4><i class="fa-regular fa-bell"></i> Notifications</h4>
+                  <button class="btn btn-sm btn-outline" id="markAllReadBtn">
+                    Mark all read
+                  </button>
+                </div>
+                <div class="notification-list" id="notifList">
+                  <div class="notification-empty">No new notifications</div>
+                </div>
+              </div>
+            </div>
+            <button class="icon-btn" id="refreshBtn" title="Refresh data">
+              <i class="fa-solid fa-arrows-rotate"></i>
+            </button>
+          </div>
+        </header>
+
+        <main class="content-area">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <i class="fa-solid fa-user-plus"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="totalCount">—</h3>
+                <p>Total Registrations</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon gold">
+                <i class="fa-solid fa-bell"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="unreadCount">—</h3>
+                <p>New (Unread)</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <i class="fa-solid fa-calendar-day"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="todayCount">—</h3>
+                <p>Today</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <div class="table-header">
+              <h3><i class="fa-solid fa-table-list"></i> All Registrations</h3>
+              <div class="table-actions">
+                <button class="btn btn-gold btn-sm" id="exportAllPdf">
+                  <i class="fa-solid fa-file-pdf"></i> Export All PDF
+                </button>
+              </div>
+            </div>
+            <div class="table-wrapper" id="tableWrapper">
+              <div class="loading-overlay" id="loadingState">
+                <span class="spinner"></span> Loading registrations...
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="detailModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-user"></i> Registration Details</h3>
+          <button class="icon-btn modal-close" id="closeModal" title="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer">
+          <button class="btn btn-outline btn-sm" id="modalPdfBtn">
+            <i class="fa-solid fa-file-pdf"></i> Download PDF
+          </button>
+          <button class="btn btn-primary btn-sm" id="modalCloseBtn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>
