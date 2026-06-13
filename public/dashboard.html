@@ -18,13 +18,13 @@
         </div>
         <ul class="sidebar-nav">
           <li>
-            <a href="#" class="active" id="navRegistrations">
+            <a href="#" class="active" id="navRegistrations" data-section="registrations">
               <i class="fa-solid fa-users"></i> Registrations
             </a>
           </li>
           <li>
-            <a href="#" id="navStats">
-              <i class="fa-solid fa-chart-line"></i> Overview
+            <a href="#" id="navContacts" data-section="contacts">
+              <i class="fa-solid fa-envelope"></i> Contact Us
             </a>
           </li>
         </ul>
@@ -37,7 +37,7 @@
 
       <div class="main-content">
         <header class="topbar">
-          <h2>Registration Dashboard</h2>
+          <h2 id="pageTitle">Registration Dashboard</h2>
           <div class="topbar-actions">
             <div style="position: relative">
               <button class="icon-btn" id="notifBtn" title="Notifications">
@@ -66,11 +66,11 @@
           <div class="stats-grid">
             <div class="stat-card">
               <div class="stat-icon blue">
-                <i class="fa-solid fa-user-plus"></i>
+                <i class="fa-solid fa-user-plus" id="statIconPrimary"></i>
               </div>
               <div class="stat-info">
                 <h3 id="totalCount">—</h3>
-                <p>Total Registrations</p>
+                <p id="totalLabel">Total Registrations</p>
               </div>
             </div>
             <div class="stat-card">
@@ -95,7 +95,7 @@
 
           <div class="table-container">
             <div class="table-header">
-              <h3><i class="fa-solid fa-table-list"></i> All Registrations</h3>
+              <h3 id="tableTitle"><i class="fa-solid fa-table-list"></i> All Registrations</h3>
               <div class="table-actions">
                 <button class="btn btn-gold btn-sm" id="exportAllPdf">
                   <i class="fa-solid fa-file-pdf"></i> Export All PDF
@@ -104,7 +104,7 @@
             </div>
             <div class="table-wrapper" id="tableWrapper">
               <div class="loading-overlay" id="loadingState">
-                <span class="spinner"></span> Loading registrations...
+                <span class="spinner"></span> Loading data...
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@
     <div class="modal-overlay hidden" id="detailModal">
       <div class="modal">
         <div class="modal-header">
-          <h3><i class="fa-solid fa-user"></i> Registration Details</h3>
+          <h3 id="modalTitle"><i class="fa-solid fa-user"></i> Registration Details</h3>
           <button class="icon-btn modal-close" id="closeModal" title="Close">
             <i class="fa-solid fa-xmark"></i>
           </button>

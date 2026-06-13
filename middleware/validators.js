@@ -79,10 +79,33 @@ const registrationValidators = [
   handleValidationErrors,
 ];
 
+const contactValidators = [
+  body("name").trim().notEmpty().withMessage("Name is required").isLength({ max: 200 }).escape(),
+  body("dob").trim().notEmpty().withMessage("Date of birth is required"),
+  body("gender").trim().notEmpty().withMessage("Gender is required").isLength({ max: 50 }).escape(),
+  body("address").trim().notEmpty().withMessage("Address is required").isLength({ max: 500 }).escape(),
+  body("zip").trim().notEmpty().withMessage("ZIP code is required").isLength({ max: 20 }),
+  body("phone")
+    .trim()
+    .notEmpty()
+    .withMessage("Phone is required")
+    .matches(/^\d{10}$/)
+    .withMessage("Phone must be a valid 10-digit number"),
+  body("email")
+    .trim()
+    .notEmpty()
+    .withMessage("Email is required")
+    .isEmail()
+    .withMessage("Invalid email address")
+    .normalizeEmail()
+    .isLength({ max: 254 }),
+  handleValidationErrors,
+];
+
 const loginValidators = [
   body("username").trim().notEmpty().withMessage("Username is required"),
   body("password").notEmpty().withMessage("Password is required"),
   handleValidationErrors,
 ];
 
-module.exports = { blsRegFormValidators, registrationValidators, loginValidators };
+module.exports = { blsRegFormValidators, registrationValidators, contactValidators, loginValidators };

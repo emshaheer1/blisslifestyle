@@ -12,6 +12,7 @@ const path = require("path");
 
 const authRoutes = require("./routes/auth");
 const registrationRoutes = require("./routes/registrations");
+const contactRoutes = require("./routes/contacts");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -75,6 +76,7 @@ const authLimiter = rateLimit({
 });
 
 app.use("/api", registrationLimiter, registrationRoutes);
+app.use("/api", registrationLimiter, contactRoutes);
 app.use("/api/auth", authLimiter, authRoutes);
 
 app.use(express.static(path.join(__dirname, "public")));

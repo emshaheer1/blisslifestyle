@@ -181,7 +181,7 @@ document
 
     const API_BASE =
       (typeof window !== "undefined" && window.BLISS_API_BASE) ||
-      "https://YOUR-APP-NAME.onrender.com";
+      "https://blisslifestyle.onrender.com";
     const url = API_BASE + "/api/storeBLSRegFormData";
 
     // Use fetch to send data

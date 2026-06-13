@@ -1,7 +1,7 @@
 const express = require("express");
 const PDFDocument = require("pdfkit");
 const Registration = require("../models/Registration");
-const { blsRegFormValidators, registrationValidators } = require("../middleware/validators");
+const { blsRegFormValidators } = require("../middleware/validators");
 const { authenticateToken } = require("../middleware/auth");
 const { getFullName, getPhone, getZip, getPdfFields } = require("../utils/registrationHelpers");
 
@@ -28,32 +28,6 @@ router.post("/storeBLSRegFormData", blsRegFormValidators, async (req, res) => {
       height: req.body.height ?? null,
       bmi: req.body.bmi ?? null,
       diseases: req.body.diseases || "",
-      isRead: false,
-    });
-
-    res.status(201).json({
-      success: true,
-      message: "Registration submitted successfully",
-      id: registration._id,
-    });
-  } catch (error) {
-    console.error("Registration error:", error.message);
-    res.status(500).json({ success: false, message: "Failed to save registration" });
-  }
-});
-
-router.post("/blisLifeData", registrationValidators, async (req, res) => {
-  try {
-    const { name, dob, gender, address, zip, phone, email } = req.body;
-
-    const registration = await Registration.create({
-      name,
-      dob,
-      gender,
-      address,
-      zip,
-      phone,
-      email,
       isRead: false,
     });
 
